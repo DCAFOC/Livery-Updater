@@ -33,7 +33,7 @@ function New-Install {
         New-Item -Path $folderBrowser.SelectedPath -Name "DCAF Liveries" -ItemType "Directory"
 
         #Clone the github repository
-        ./Git/bin/git clone --progress https://github.com/DCAFOC/Liveries $newFolder
+        ./Git/bin/git clone --progress https://github.com/DCAFOC/DCAF-Liveries $newFolder
 
         #Write out liveries path for later use by update or removal
         if (-not (Test-Path -Path .\LiveryPath.cfg)) {

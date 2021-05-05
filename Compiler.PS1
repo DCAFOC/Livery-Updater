@@ -1,1 +1,1 @@
-Invoke-PS2EXE .\SourceCode.PS1 .\Updater.exe
+Invoke-PS2EXE .\SourceCode.PS1 .\"DCAF Livery Updater x.x.x.exe"
