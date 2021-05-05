@@ -1,0 +1,1 @@
+Invoke-PS2EXE .\SourceCode.PS1 .\Updater.exe
