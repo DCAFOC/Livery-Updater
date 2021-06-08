@@ -1,7 +1,7 @@
 Write-Output "`n*** Welcome to DCAF's Livery Updater ***`n`n"
 
 
-
+./Git/bin/git config --global pull.ff only
 
 while ($firstOption -ne "1" -and $firstOption -ne "2" -and $firstOption -ne "3") {
     #Write menu and prompt user for option
@@ -33,7 +33,7 @@ function New-Install {
         New-Item -Path $folderBrowser.SelectedPath -Name "DCAF Liveries" -ItemType "Directory"
 
         #Clone the github repository
-        ./Git/bin/git clone --progress --depth 1 https://github.com/DCAFOC/DCAF-Liveries $newFolder
+        ./Git/bin/git clone --progress --depth 50 https://github.com/DCAFOC/DCAF-Liveries $newFolder
 
         #Write out liveries path for later use by update or removal
         if (-not (Test-Path -Path .\LiveryPath.cfg)) {
@@ -81,14 +81,14 @@ if ($firstOption -eq "2") {
             } elseif (Test-Path -Path $folderBrowser.SelectedPath) {
                 
                 Remove-Item -Path .\LiveryPath.cfg -ErrorAction SilentlyContinue
-                ./Git/bin/git -C $folderBrowser.SelectedPath pull --progress --depth 1
+                ./Git/bin/git -C $folderBrowser.SelectedPath pull --progress --depth 50
                 $folderBrowser.SelectedPath | Out-File -FilePath .\LiveryPath.cfg
             }
 
         #Git Pull if the existing liverypath.cfg IS correct
         } elseif ($m2Option -eq "y") {
             $liveryPath = Get-Content -Path .\LiveryPath.cfg
-            ./Git/bin/git -C $liveryPath pull --progress --depth 1
+            ./Git/bin/git -C $liveryPath pull --progress --depth 50
         }
 
     #LiveryCfg path was not valid
@@ -118,7 +118,7 @@ if ($firstOption -eq "2") {
             } elseif (Test-Path -Path $folderBrowser.SelectedPath) {
                 
                 Remove-Item -Path .\LiveryPath.cfg -ErrorAction SilentlyContinue
-                ./Git/bin/git -C $folderBrowser.SelectedPath pull --progress --depth 1
+                ./Git/bin/git -C $folderBrowser.SelectedPath pull --progress --depth 50
                 $folderBrowser.SelectedPath | Out-File -FilePath .\LiveryPath.cfg
             }
         #User does not want to manually locate the directory
